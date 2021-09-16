@@ -14,6 +14,16 @@
                     </div>
                     @endif
 
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                     createです
                     <form method="POST" action="{{route('contact.store')}}">
                         @csrf
@@ -24,7 +34,7 @@
                         <input type="text" name="title">
                         <br>
                         メールアドレス
-                        <input type="text" name="email">
+                        <input type="email" name="email">
                         <br>
                         ホームページ
                         <input type="url" name="url">
@@ -44,8 +54,13 @@
                             <option value="6">60歳〜</option>
                         </select>
                         <br>
+                        お問い合わせ内容
+                        <textarea name="contact"></textarea>
+                        <br>
+
                         <input type="checkbox" name="caution" value="1">注意事項に同意する
                         <br>
+
                         <input class="btn btn-info" type="submit" value="登録する">
                     </form>
                 </div>
