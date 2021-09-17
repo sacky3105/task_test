@@ -13,8 +13,17 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <a href="{{route('contact.create')}}">新規登録</a>
-                    indexです
+                    <form method="GET" action="{{route('contact.create')}}">
+                        <button type="submit" class="btn btn-primary">
+                            新規登録
+                        </button>
+                    </form>
+
+                    <form method="GET" action="{{ route('contact.index') }}" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="検索" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索する</button>
+                    </form>
+
 
                     <table class="table">
                         <thead>
@@ -38,6 +47,8 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    {{ $contacts->links() }}
                 </div>
             </div>
         </div>
